@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "530607594415",
+    "project_id": "myicc-lyon",
+    "storage_bucket": "myicc-lyon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:530607594415:android:8d02462b1bad0ab81f2d5a",
+        "android_client_info": {
+          "package_name": "com.example.myicclyon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "530607594415-prmftgviro3nageiq14jpoj7ma6qmc8u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfUY2f_BvbSYwTpCzA-7irba2rZOcx7aU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "530607594415-prmftgviro3nageiq14jpoj7ma6qmc8u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
