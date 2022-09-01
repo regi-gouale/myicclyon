@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myicclyon/firebase_options.dart';
+import 'package:myicclyon/src/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,12 +19,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MyICC Lyon',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.purple,
         textTheme: GoogleFonts.montserratTextTheme(),
       ),
-      home: const MyHomePage(title: 'Accueil'),
+      home: const HomePage(title: 'Accueil'),
     );
   }
 }
