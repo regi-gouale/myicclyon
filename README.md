@@ -7,7 +7,7 @@ Rétrouvez toute l'actualité de l'église locale de Lyon sur cette application.
 
 ## Fonctionalités
 - [ ] Accueil
-  - [x] Cultes et Série d'enseignement en cours
+  - [ ] Cultes et Série d'enseignement en cours
   - [ ] Les temps de prières 
   - [ ] Les mariages
   - [ ] Les Ministères 
