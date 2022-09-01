@@ -1,16 +1,40 @@
-# myicclyon
+# MyICC Lyon
 
-A new Flutter project.
+## Généralités
+Bienvenue à Impact Centre Chrétien Lyon, une église où l'amour de Dieu transforme des personnes ordianaires en de véritables champions.
 
-## Getting Started
+Rétrouvez toute l'actualité de l'église locale de Lyon sur cette application.
 
-This project is a starting point for a Flutter application.
+## Fonctionalités
+- [ ] Accueil
+  - [x] Cultes et Série d'enseignement en cours
+  - [ ] Les temps de prières 
+  - [ ] Les mariages
+  - [ ] Les Ministères 
+  - [ ] Listes des programmes de l'église de la semaine avec les horaires et les lieux
+  - [ ] Programmes des ministères spécifiques
+- [ ] Actions
+  - [ ] Appel au salut
+  - [ ] Renouvellemnt d'engement
+  - [ ] Demande d'intégration
+  - [ ] Baptème
+  - [ ] Demande de prière
+  - [ ] Postuler pour servir
+  - [ ] Demande d'informations
+- [ ] Prendre des rendez-vous
+  - [ ] Prndre un rendez-vous avec un pasteur
+  - [ ] Prendre rendez-vous avec un ministre
+  - [ ] Prendre rendez-vous avec un responsable
+- [ ] Profil
+  - [ ] Authentification
+  - [ ] Carte de membre numérique
+  - [ ] Modifier mes informations
+  - [ ] Ajouter une photo
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Idées futures
+- [ ] Suivre le culte en direct
+- [ ] Chat
+- [ ] Covoituage
+- [ ] Suivi des soins pastoraux
+- [ ] Prise de notes des cultes
+- [ ] Suivi de la coordination des cultes
