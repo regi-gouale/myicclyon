@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:boxy/slivers.dart';
 import 'package:flutter/material.dart';
 import 'package:myicclyon/src/app_bar_component.dart';
 import 'package:myicclyon/src/constants.dart';
@@ -14,58 +14,85 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarComponent(title: title),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Cultes",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontSize: FontSizeConstants.medium,
-                    fontWeight: FontWeight.bold,
-                  ),
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Cultes",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontSize: FontSizeConstants.large,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-            Card(
-              elevation: 10,
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+          ),
+          SliverCard(
+            elevation: 5,
+            margin: const EdgeInsets.symmetric(
+              horizontal: 10,
+              vertical: 4.0,
+            ),
+            color: ColorsConstant.vividPurple,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            sliver: SliverList(
+              delegate: SliverChildBuilderDelegate(
+                ((context, index) {
+                  return InkWell(
+                    onTap: () {},
+                    child: Container(
+                      height: 150,
+                    ),
+                  );
+                }),
+                childCount: 1,
               ),
-              child: InkWell(
-                onTap: () {
-                  if (kDebugMode) {
-                    print("culte d'action de grâces");
-                  }
-                },
-                child: Container(
-                  height: 150,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: ColorsConstant.vividPurple,
-                  ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Évènements",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontSize: FontSizeConstants.large,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-            SizedBox(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
-                  "Évènements",
-                  style: TextStyle(
-                    fontSize: FontSizeConstants.medium,
-                    fontWeight: FontWeight.bold,
+          ),
+          SliverGrid(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return InkWell(
+                  onTap: () {},
+                  child: Container(
+                    height: 100,
+                    alignment: Alignment.center,
+                    margin: const EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.purple[100 * (index % 9)],
+                    ),
+                    child: Text('Grid Item $index'),
                   ),
-                ),
-              ),
+                );
+              },
+              childCount: 5,
             ),
-            // GridView.count(crossAxisCount: 2)
-          ],
-        ),
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200.0,
+              mainAxisSpacing: 5.0,
+              crossAxisSpacing: 5.0,
+              childAspectRatio: 1.0,
+            ),
+          )
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
