@@ -1,8 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myicclyon/firebase_options.dart';
+import 'package:myicclyon/src/app.dart';
 import 'package:myicclyon/src/home_page.dart';
+import 'package:myicclyon/src/services/event/event_bloc.dart';
+import 'package:form_builder_validators/localization/l10n.dart';
+// ignore: depend_on_referenced_packages
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +31,27 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
         textTheme: GoogleFonts.montserratTextTheme(),
       ),
-      home: const HomePage(title: 'Accueil'),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider<EventBloc>(
+            create: ((context) => EventBloc()),
+            lazy: false,
+          ),
+        ],
+        child: const App(bnbLabelsAndIcons: {
+          "Accueil": Icons.home,
+          "Actions": Icons.call_to_action,
+        }),
+      ),
+      localizationsDelegates: const [
+        FormBuilderLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      // supportedLocales: const [
+      //   Locale("fr", "FR"),
+      //   Locale("en", "GB"),
+      // ],
     );
   }
 }
