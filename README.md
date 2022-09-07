@@ -1,16 +1,18 @@
 # MyICC Lyon
 
 ## Généralités
+
 Bienvenue à Impact Centre Chrétien Lyon, une église où l'amour de Dieu transforme des personnes ordianaires en de véritables champions.
 
 Rétrouvez toute l'actualité de l'église locale de Lyon sur cette application.
 
 ## Fonctionalités
+
 - [ ] Accueil
   - [ ] Cultes et Série d'enseignement en cours
-  - [ ] Les temps de prières 
+  - [ ] Les temps de prières
   - [ ] Les mariages
-  - [ ] Les Ministères 
+  - [ ] Les Ministères
   - [ ] Listes des programmes de l'église de la semaine avec les horaires et les lieux
   - [ ] Programmes des ministères spécifiques
 - [ ] Actions
@@ -32,6 +34,7 @@ Rétrouvez toute l'actualité de l'église locale de Lyon sur cette application.
   - [ ] Ajouter une photo
 
 ## Idées futures
+
 - [ ] Suivre le culte en direct
 - [ ] Chat
 - [ ] Covoituage

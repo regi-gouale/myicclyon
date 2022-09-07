@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
               horizontal: 10,
               vertical: 4.0,
             ),
-            color: ColorsConstant.vividPurple,
+            // color: ColorsConstant.vividPurple,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
