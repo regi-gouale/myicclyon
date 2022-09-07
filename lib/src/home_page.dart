@@ -1,9 +1,9 @@
-import 'package:boxy/slivers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:myicclyon/src/app_bar_component.dart';
 import 'package:myicclyon/src/constants.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({
     super.key,
     required this.title,
@@ -11,87 +11,114 @@ class HomePage extends StatelessWidget {
   final String title;
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarComponent(title: title),
+      appBar: AppBarComponent(title: widget.title),
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Cultes",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontSize: FontSizeConstants.large,
-                  fontWeight: FontWeight.bold,
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 16.0,
+                    right: 16.0,
+                    bottom: 8.0,
+                  ),
+                  child: Text(
+                    "Cultes",
+                    style: TextStyle(
+                      fontSize: FontSizeConstants.large,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
-          SliverCard(
-            elevation: 5,
-            margin: const EdgeInsets.symmetric(
-              horizontal: 10,
-              vertical: 4.0,
-            ),
-            // color: ColorsConstant.vividPurple,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                ((context, index) {
-                  return InkWell(
-                    onTap: () {},
-                    child: Container(
-                      height: 150,
+          SliverToBoxAdapter(
+            child: GestureDetector(
+              onTap: () {
+                if (kDebugMode) {
+                  print("On a cliqué sur lea carte");
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Card(
+                  elevation: 5,
+                  child: Container(
+                    height: 150.0,
+                    decoration: BoxDecoration(
+                      color: ColorsConstant.vividPurple,
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                  );
-                }),
-                childCount: 1,
+                  ),
+                ),
               ),
             ),
           ),
           SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Évènements",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontSize: FontSizeConstants.large,
-                  fontWeight: FontWeight.bold,
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 16.0,
+                    right: 16.0,
+                    bottom: 8.0,
+                    top: 8.0,
+                  ),
+                  child: Text(
+                    "Évènements",
+                    style: TextStyle(
+                      fontSize: FontSizeConstants.large,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
           SliverGrid(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return InkWell(
-                  onTap: () {},
-                  child: Container(
-                    height: 100,
-                    alignment: Alignment.center,
-                    margin: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.purple[100 * (index % 9)],
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      if (kDebugMode) {
+                        print("Click on event: $index");
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 5.0,
+                        horizontal: 5.0,
+                      ),
+                      child: Card(
+                        elevation: 3,
+                        child: Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Colors.teal[100 * (index % 9)],
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Text('Event $index'),
+                        ),
+                      ),
                     ),
-                    child: Text('Grid Item $index'),
-                  ),
-                );
-              },
-              childCount: 5,
-            ),
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 200.0,
-              mainAxisSpacing: 5.0,
-              crossAxisSpacing: 5.0,
-              childAspectRatio: 1.0,
-            ),
-          )
+                  );
+                },
+                childCount: 10,
+              ),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 1,
+                crossAxisSpacing: 1,
+                childAspectRatio: 1.5,
+              )),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
