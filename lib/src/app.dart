@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:myicclyon/src/actions_page.dart';
-import 'package:myicclyon/src/home_page.dart';
+import 'package:myicclyon/src/pages/actions_page.dart';
+import 'package:myicclyon/src/pages/home_page.dart';
 
-import 'app_bar_component.dart';
+import 'components/app_bar_component.dart';
 
 class App extends StatefulWidget {
   final Map<String, IconData> bnbLabelsAndIcons;

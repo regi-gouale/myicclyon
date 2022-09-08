@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myicclyon/src/profil_page.dart';
+import 'package:myicclyon/src/pages/profil_page.dart';
 
 class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   const AppBarComponent({

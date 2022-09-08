@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:myicclyon/src/constants.dart';
+import 'package:myicclyon/src/utils/constants.dart';
 
 class ActionsPage extends StatelessWidget {
   const ActionsPage({super.key});
