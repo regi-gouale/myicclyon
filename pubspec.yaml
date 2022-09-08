@@ -41,6 +41,7 @@ dependencies:
   flutter_form_builder: ^7.6.0
   form_builder_validators: ^8.3.0
   google_fonts: ^3.0.1
+  qr_flutter: ^4.0.0
   sliver_tools: ^0.2.8
 
 dev_dependencies:

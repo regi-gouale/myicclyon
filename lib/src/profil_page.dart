@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:myicclyon/src/constants.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 class ProfilPage extends StatefulWidget {
@@ -38,11 +39,13 @@ class _ProfilPageState extends State<ProfilPage> {
                   print("Changer la photo de profil");
                 }
               },
-              child: const CircleAvatar(
+              child:  CircleAvatar(
+                backgroundColor:  ColorsConstant.vividPurple,
                 radius: 60.0,
-                child: Text(
+                child:  Text(
                   "RG",
                   style: TextStyle(
+                    color: ColorsConstant.white,
                     fontSize: 40.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -78,7 +81,7 @@ class _ProfilPageState extends State<ProfilPage> {
                 "Informations Personnelles",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: FontSizeConstants.small,
+                  fontSize: FontSizeConstants.medium,
                 ),
               ),
             ),
@@ -101,19 +104,21 @@ class _ProfilPageState extends State<ProfilPage> {
                           children: [
                             const Expanded(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 8.0,
-                                  vertical: 1.0,
+                                padding: EdgeInsets.only(
+                                  left: 30.0,
                                 ),
                                 child: Text(
                                   "Régi GOUALE",
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8.0,
-                                vertical: 1.0,
+                              padding: const EdgeInsets.only(
+                                right: 8.0,
                               ),
                               child: IconButton(
                                 onPressed: () {
@@ -130,19 +135,21 @@ class _ProfilPageState extends State<ProfilPage> {
                           children: [
                             const Expanded(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 8.0,
-                                  vertical: 1.0,
+                                padding: EdgeInsets.only(
+                                  left: 30.0,
                                 ),
                                 child: Text(
                                   "06 12 34 57 89",
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8.0,
-                                vertical: 1.0,
+                              padding: const EdgeInsets.only(
+                                right: 8.0,
                               ),
                               child: IconButton(
                                 onPressed: () {
@@ -159,19 +166,21 @@ class _ProfilPageState extends State<ProfilPage> {
                           children: [
                             const Expanded(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 8.0,
-                                  vertical: 1.0,
+                                padding: EdgeInsets.only(
+                                  left: 30.0,
                                 ),
                                 child: Text(
                                   "regi.gouale@icclyon.fr",
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8.0,
-                                vertical: 1.0,
+                              padding: const EdgeInsets.only(
+                                right: 8.0,
                               ),
                               child: IconButton(
                                 onPressed: () {
@@ -188,19 +197,21 @@ class _ProfilPageState extends State<ProfilPage> {
                           children: [
                             const Expanded(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 8.0,
-                                  vertical: 1.0,
+                                padding: EdgeInsets.only(
+                                  left: 30.0,
                                 ),
                                 child: Text(
                                   "01/01/1990",
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8.0,
-                                vertical: 1.0,
+                              padding: const EdgeInsets.only(
+                                right: 8.0,
                               ),
                               child: IconButton(
                                 onPressed: () {
@@ -230,7 +241,7 @@ class _ProfilPageState extends State<ProfilPage> {
               child: Text(
                 "Départements",
                 style: TextStyle(
-                  fontSize: FontSizeConstants.small,
+                  fontSize: FontSizeConstants.medium,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -258,42 +269,98 @@ class _ProfilPageState extends State<ProfilPage> {
                 ),
               ),
               SliverList(
-                delegate: SliverChildBuilderDelegate((context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 38.0),
-                          child: Row(
-                            children: [
-                              Text(
-                                "Département ${index + 1}",
-                                textAlign: TextAlign.left,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 38.0),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    "Département ${index + 1}",
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                        fontSize: FontSizeConstants.small,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 30.0),
+                                  child: (index % 3 != 0)
+                                      ? Icon(
+                                          Icons.people,
+                                          color: ColorsConstant.vividPurple,
+                                        )
+                                      : Icon(
+                                          Icons.star,
+                                          color: ColorsConstant.vividRed,
+                                        ),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                        const Divider(),
-                      ],
-                    ),
-                  );
-                }, childCount: 3),
+                          const Divider(),
+                        ],
+                      ),
+                    );
+                  },
+                  childCount: 3,
+                ),
               ),
             ],
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Container(
-          decoration: const BoxDecoration(shape: BoxShape.circle),
-          child: const Icon(
-            Icons.mode_edit_sharp,
-            size: 30.0,
-          ),
+        backgroundColor: ColorsConstant.vividPurple,
+        onPressed: () {
+          showModalBottomSheet<void>(
+            backgroundColor: Colors.transparent,
+            context: context,
+            builder: (BuildContext context) {
+              return Container(
+                height: 300.0,
+                decoration: BoxDecoration(
+                  color: ColorsConstant.white,
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(25.0),
+                    topRight: Radius.circular(25.0),
+                  ),
+                ),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "Régi GOUALE",
+                          style: TextStyle(
+                            fontSize: FontSizeConstants.large,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      QrImage(
+                        data: '6d2645f6bfc5078e5bd8c7719b4d8ed5',
+                        version: QrVersions.auto,
+                        size: 200.0,
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
+        },
+        child: const Icon(
+          Icons.qr_code,
+          size: 30.0,
         ),
       ),
     );
