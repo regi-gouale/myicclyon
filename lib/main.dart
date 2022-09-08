@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myicclyon/firebase_options.dart';
 import 'package:myicclyon/src/app.dart';
-import 'package:myicclyon/src/home_page.dart';
 import 'package:myicclyon/src/services/event/event_bloc.dart';
 import 'package:form_builder_validators/localization/l10n.dart';
 // ignore: depend_on_referenced_packages

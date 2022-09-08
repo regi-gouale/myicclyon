@@ -101,8 +101,9 @@ class GradientConstants {
 }
 
 class FontSizeConstants {
-  static double small = 13;
-  static double medium = 20;
-  static double large = 36;
-  static double xLarge = 42;
+  static double xSmall = 8;
+  static double small = 16;
+  static double medium = 24;
+  static double large = 32;
+  static double xLarge = 40;
 }

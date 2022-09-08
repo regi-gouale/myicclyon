@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myicclyon/src/profil_page.dart';
 
 class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   const AppBarComponent({
@@ -14,6 +15,7 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
         title,
         style: const TextStyle(
           fontWeight: FontWeight.bold,
+          fontSize: 16.0,
         ),
       ),
       automaticallyImplyLeading: true,
@@ -28,7 +30,13 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const ProfilPage(),
+                ),
+              );
+            },
             icon: const Icon(
               Icons.person,
             ),
