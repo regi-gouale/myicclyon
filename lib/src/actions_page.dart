@@ -14,7 +14,7 @@ class ActionsPage extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 8.0),
             child: Container(
               height: 200,
-              color: ColorsConstant.lightGreenCyan,
+              color: ColorsConstant.vividPurple,
             ),
           ),
         ),
@@ -37,7 +37,7 @@ class ActionsPage extends StatelessWidget {
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: Colors.teal[100 * (index % 9)],
+                          color: Colors.purple[100 * (index % 9)],
                           borderRadius: BorderRadius.circular(5)),
                       child: Text('Action $index'),
                     ),

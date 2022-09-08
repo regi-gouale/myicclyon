@@ -101,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: Colors.teal[100 * (index % 9)],
+                          color: Colors.purple[100 * (index % 9)],
                           borderRadius: BorderRadius.circular(5)),
                       child: Text('Event $index'),
                     ),
@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               );
             },
-            childCount: 10,
+            childCount: 8,
           ),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
