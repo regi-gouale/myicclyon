@@ -50,11 +50,11 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.symmetric(horizontal: 5.0),
               child: Card(
                 elevation: 5,
-                child: Container(
-                  height: 150.0,
-                  decoration: BoxDecoration(
-                    color: ColorsConstant.vividPurple,
-                    borderRadius: BorderRadius.circular(10),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15.0),
+                  child: Image.asset(
+                    "assets/cultes.jpg",
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
@@ -88,13 +88,13 @@ class _HomePageState extends State<HomePage> {
               return GestureDetector(
                 onTap: () {
                   if (kDebugMode) {
-                    print("Click on event: $index");
+                    print("Click on event: ${index + 1}");
                   }
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                     vertical: 5.0,
-                    horizontal: 5.0,
+                    horizontal: 2.5,
                   ),
                   child: Card(
                     elevation: 3,
@@ -102,14 +102,14 @@ class _HomePageState extends State<HomePage> {
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                           color: Colors.purple[100 * (index % 9)],
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Text('Event $index'),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Text('Event ${index + 1}'),
                     ),
                   ),
                 ),
               );
             },
-            childCount: 8,
+            childCount: 25,
           ),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,

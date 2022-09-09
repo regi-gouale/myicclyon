@@ -1,5 +1,7 @@
+import 'package:cloud_firestore_odm/cloud_firestore_odm.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:myicclyon/src/models/person_model.dart';
 import 'package:myicclyon/src/pages/actions_page.dart';
 import 'package:myicclyon/src/pages/home_page.dart';
 
@@ -7,9 +9,11 @@ import 'components/app_bar_component.dart';
 
 class App extends StatefulWidget {
   final Map<String, IconData> bnbLabelsAndIcons;
+  final String token;
   const App({
     super.key,
     required this.bnbLabelsAndIcons,
+    required this.token,
   });
 
   @override
@@ -74,18 +78,47 @@ class _AppState extends State<App> {
     if (kDebugMode) {
       print(widget.bnbLabelsAndIcons.keys.elementAt(selectedIndexPage));
     }
-    return Scaffold(
-      appBar: AppBarComponent(
-        title: widget.bnbLabelsAndIcons.keys.elementAt(selectedIndexPage),
-      ),
-      body: buildPage(),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: selectedIndexPage,
-        onTap: (index) {
-          bottomTapped(index);
-        },
-        items: buildBNBItems(widget.bnbLabelsAndIcons),
-      ),
+    return FirestoreBuilder<PersonModelDocumentSnapshot>(
+      ref: personModelRef.doc(widget.token),
+      builder: (
+        BuildContext context,
+        AsyncSnapshot<PersonModelDocumentSnapshot> snapshot,
+        Widget? child,
+      ) {
+        if (snapshot.hasError) {
+          return const Scaffold(
+            body: Text("Something went wrong!"),
+          );
+        }
+        if (!snapshot.hasData) {
+          return const Scaffold(
+            body: Text("Loading data..."),
+          );
+        }
+        PersonModelDocumentSnapshot documentSnapshot = snapshot.requireData;
+
+        if (!documentSnapshot.exists) {
+          return const Scaffold(
+            body: Text("Person does not exist."),
+          );
+        }
+
+        PersonModel personModel = documentSnapshot.data!;
+        return Scaffold(
+          appBar: AppBarComponent(
+            title: widget.bnbLabelsAndIcons.keys.elementAt(selectedIndexPage),
+            person: personModel,
+          ),
+          body: buildPage(),
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: selectedIndexPage,
+            onTap: (index) {
+              bottomTapped(index);
+            },
+            items: buildBNBItems(widget.bnbLabelsAndIcons),
+          ),
+        );
+      },
     );
   }
 }

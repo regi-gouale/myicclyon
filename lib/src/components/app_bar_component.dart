@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:myicclyon/src/models/person_model.dart';
 import 'package:myicclyon/src/pages/profil_page.dart';
 
 class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   const AppBarComponent({
     super.key,
     required this.title,
+    required this.person,
   });
   final String title;
+  final PersonModel person;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +36,9 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => const ProfilPage(),
+                  builder: (context) => ProfilPage(
+                    person: person,
+                  ),
                 ),
               );
             },

@@ -1,11 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:myicclyon/src/components/personal_infos_list_component.dart';
+import 'package:myicclyon/src/models/person_model.dart';
 import 'package:myicclyon/src/utils/constants.dart';
+import 'package:myicclyon/src/widgets/personal_infos_widget.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 class ProfilPage extends StatefulWidget {
-  const ProfilPage({super.key});
+  const ProfilPage({
+    super.key,
+    required this.person,
+  });
+  final PersonModel person;
 
   @override
   State<ProfilPage> createState() => _ProfilPageState();
@@ -39,11 +46,11 @@ class _ProfilPageState extends State<ProfilPage> {
                   print("Changer la photo de profil");
                 }
               },
-              child:  CircleAvatar(
-                backgroundColor:  ColorsConstant.vividPurple,
+              child: CircleAvatar(
+                backgroundColor: ColorsConstant.vividPurple,
                 radius: 60.0,
-                child:  Text(
-                  "RG",
+                child: Text(
+                  "${widget.person.firstName[0].toUpperCase()}${widget.person.lastName[0].toUpperCase()}",
                   style: TextStyle(
                     color: ColorsConstant.white,
                     fontSize: 40.0,
@@ -58,10 +65,10 @@ class _ProfilPageState extends State<ProfilPage> {
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: Center(
                 child: Text(
-                  "Regi GOUALE",
+                  "${widget.person.firstName} ${widget.person.lastName}",
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
                     fontSize: FontSizeConstants.medium,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -76,6 +83,7 @@ class _ProfilPageState extends State<ProfilPage> {
             child: Padding(
               padding: const EdgeInsets.only(
                 left: 28.0,
+                bottom: 8.0,
               ),
               child: Text(
                 "Informations Personnelles",
@@ -86,150 +94,21 @@ class _ProfilPageState extends State<ProfilPage> {
               ),
             ),
           ),
-          SliverToBoxAdapter(
-            child: GestureDetector(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Card(
-                  elevation: 5,
-                  child: Container(
-                    height: 200,
-                    decoration: BoxDecoration(
-                      color: ColorsConstant.white,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            const Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                  left: 30.0,
-                                ),
-                                child: Text(
-                                  "Régi GOUALE",
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                right: 8.0,
-                              ),
-                              child: IconButton(
-                                onPressed: () {
-                                  if (kDebugMode) {
-                                    print("click on name infos");
-                                  }
-                                },
-                                icon: const Icon(Icons.person),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            const Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                  left: 30.0,
-                                ),
-                                child: Text(
-                                  "06 12 34 57 89",
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                right: 8.0,
-                              ),
-                              child: IconButton(
-                                onPressed: () {
-                                  if (kDebugMode) {
-                                    print("click on name infos");
-                                  }
-                                },
-                                icon: const Icon(Icons.phone),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            const Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                  left: 30.0,
-                                ),
-                                child: Text(
-                                  "regi.gouale@icclyon.fr",
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                right: 8.0,
-                              ),
-                              child: IconButton(
-                                onPressed: () {
-                                  if (kDebugMode) {
-                                    print("click on name infos");
-                                  }
-                                },
-                                icon: const Icon(Icons.mail),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            const Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                  left: 30.0,
-                                ),
-                                child: Text(
-                                  "01/01/1990",
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                right: 8.0,
-                              ),
-                              child: IconButton(
-                                onPressed: () {
-                                  if (kDebugMode) {
-                                    print("click on birthday infos");
-                                  }
-                                },
-                                icon: const Icon(Icons.date_range_rounded),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+          PersonalInfosListComponent(
+            children: [
+              PersonalInfosWidget(
+                label: widget.person.phone,
+                icon: Icons.phone,
               ),
-            ),
+              PersonalInfosWidget(
+                label: widget.person.email,
+                icon: Icons.email,
+              ),
+              PersonalInfosWidget(
+                label: "${DateTime.now().year - widget.person.birthYear} ans",
+                icon: Icons.calendar_today,
+              ),
+            ],
           ),
           SliverToBoxAdapter(
             child: Padding(
@@ -247,72 +126,33 @@ class _ProfilPageState extends State<ProfilPage> {
               ),
             ),
           ),
-          SliverStack(
-            insetOnOverlap: false,
+          PersonalInfosListComponent(
             children: [
-              SliverPositioned.fill(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: ColorsConstant.white,
-                      boxShadow: const <BoxShadow>[
-                        BoxShadow(
-                          offset: Offset(0, 4),
-                          blurRadius: 8,
-                          color: Colors.black26,
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                ),
+              PersonalInfosWidget(
+                label: "Protocole",
+                icon: Icons.people,
+                iconColor: ColorsConstant.vividPurple,
               ),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 38.0),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    "Département ${index + 1}",
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                        fontSize: FontSizeConstants.small,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 30.0),
-                                  child: (index % 3 != 0)
-                                      ? Icon(
-                                          Icons.people,
-                                          color: ColorsConstant.vividPurple,
-                                        )
-                                      : Icon(
-                                          Icons.star,
-                                          color: ColorsConstant.vividRed,
-                                        ),
-                                )
-                              ],
-                            ),
-                          ),
-                          const Divider(),
-                        ],
-                      ),
-                    );
-                  },
-                  childCount: 3,
-                ),
+              PersonalInfosWidget(
+                label: "Solutions Digitales",
+                icon: Icons.star,
+                iconColor: ColorsConstant.vividRed,
+              ),
+              PersonalInfosWidget(
+                label: "Direction Projets Informatiques",
+                icon: Icons.star,
+                iconColor: ColorsConstant.vividRed,
+              ),
+              PersonalInfosWidget(
+                label: "Familles d'Impact",
+                icon: Icons.people,
+                iconColor: ColorsConstant.vividPurple,
               ),
             ],
           ),
+        const SliverToBoxAdapter(
+          child: SizedBox(height: 50,),
+        )
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -339,7 +179,7 @@ class _ProfilPageState extends State<ProfilPage> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          "Régi GOUALE",
+                          "${widget.person.firstName} ${widget.person.lastName}",
                           style: TextStyle(
                             fontSize: FontSizeConstants.large,
                             fontWeight: FontWeight.bold,
@@ -347,7 +187,7 @@ class _ProfilPageState extends State<ProfilPage> {
                         ),
                       ),
                       QrImage(
-                        data: '6d2645f6bfc5078e5bd8c7719b4d8ed5',
+                        data: widget.person.token,
                         version: QrVersions.auto,
                         size: 200.0,
                       ),

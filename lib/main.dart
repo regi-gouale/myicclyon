@@ -37,10 +37,20 @@ class MyApp extends StatelessWidget {
             lazy: false,
           ),
         ],
-        child: const App(bnbLabelsAndIcons: {
-          "Accueil": Icons.home,
-          "Actions": Icons.call_to_action,
-        }),
+        // child: Scaffold(
+        //   body: Center(
+        //     child: Text(
+        //       getPerson(id: "6d2645f6bfc5078e5bd8c7719b4d8ed5").firstName,
+        //     ),
+        //   ),
+        // ),
+        child: const App(
+          bnbLabelsAndIcons: {
+            "Accueil": Icons.home,
+            "Actions": Icons.call_to_action,
+          },
+          token: '6d2645f6bfc5078e5bd8c7719b4d8ed5',
+        ),
       ),
       localizationsDelegates: const [
         FormBuilderLocalizations.delegate,
