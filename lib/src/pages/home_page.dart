@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:myicclyon/src/pages/detail_event_page.dart';
 import 'package:myicclyon/src/utils/constants.dart';
 
 class HomePage extends StatefulWidget {
@@ -45,6 +46,11 @@ class _HomePageState extends State<HomePage> {
               if (kDebugMode) {
                 print("On a cliqué sur lea carte");
               }
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const DetailEventPage(coverImageUrl: '',),
+                ),
+              );
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5.0),

@@ -33,17 +33,10 @@ class MyApp extends StatelessWidget {
       home: MultiBlocProvider(
         providers: [
           BlocProvider<EventBloc>(
-            create: ((context) => EventBloc()),
+            create: (context) => EventBloc(),
             lazy: false,
           ),
         ],
-        // child: Scaffold(
-        //   body: Center(
-        //     child: Text(
-        //       getPerson(id: "6d2645f6bfc5078e5bd8c7719b4d8ed5").firstName,
-        //     ),
-        //   ),
-        // ),
         child: const App(
           bnbLabelsAndIcons: {
             "Accueil": Icons.home,

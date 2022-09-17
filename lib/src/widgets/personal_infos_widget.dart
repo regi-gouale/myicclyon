@@ -51,7 +51,10 @@ class PersonalInfosWidget extends StatelessWidget {
             ),
           ],
         ),
-        const Divider(),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          child: Divider(),
+        ),
       ],
     );
   }

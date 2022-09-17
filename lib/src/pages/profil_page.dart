@@ -5,7 +5,6 @@ import 'package:myicclyon/src/models/person_model.dart';
 import 'package:myicclyon/src/utils/constants.dart';
 import 'package:myicclyon/src/widgets/personal_infos_widget.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:sliver_tools/sliver_tools.dart';
 
 class ProfilPage extends StatefulWidget {
   const ProfilPage({

@@ -11,10 +11,7 @@ Rétrouvez toute l'actualité de l'église locale de Lyon sur cette application.
 - [ ] Accueil
   - [ ] Cultes et Série d'enseignement en cours
   - [ ] Les temps de prières
-  - [ ] Les mariages
-  - [ ] Les Ministères
   - [ ] Listes des programmes de l'église de la semaine avec les horaires et les lieux
-  - [ ] Programmes des ministères spécifiques
 - [ ] Actions
   - [ ] Appel au salut
   - [ ] Renouvellemnt d'engement
@@ -29,7 +26,7 @@ Rétrouvez toute l'actualité de l'église locale de Lyon sur cette application.
   - [ ] Prendre rendez-vous avec un responsable
 - [ ] Profil
   - [ ] Authentification
-  - [ ] Carte de membre numérique
+  - [x] Carte de membre numérique
   - [ ] Modifier mes informations
   - [ ] Ajouter une photo
 
@@ -41,3 +38,6 @@ Rétrouvez toute l'actualité de l'église locale de Lyon sur cette application.
 - [ ] Suivi des soins pastoraux
 - [ ] Prise de notes des cultes
 - [ ] Suivi de la coordination des cultes
+- [ ] Les mariages
+- [ ] Les Ministères
+- [ ] Programmes des ministères spécifiques
